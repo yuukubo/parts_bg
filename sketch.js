@@ -11,6 +11,8 @@ let blocky1 = 0;
 let blockx2 = 0;
 let blocky2 = -1 * canvasy;
 let blocknum = 0;
+let linex1 = 0;
+let liney1 = 0;
 
 function setup() {
   createCanvas(canvasx, canvasy);
@@ -39,6 +41,8 @@ function draw() {
 
   push();
   stroke(255);
-  line(blockx1, blockh, blockw, blockh);
+  for (let i = 0; i < blocknum; i++) {
+    line(linex1, liney1 + i * blockh, blockw, liney1 + i * blockh);  
+  }
   pop();
 }
