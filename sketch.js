@@ -50,7 +50,7 @@ function draw() {
   push();
   stroke(255);
   for (let i = 0; i < lineynum; i++) {
-    line(linexfr, lineyfr + i * lineyinterval, linexto, lineyfr + i * lineyinterval);  
+    line(linexfr, blocky1 + i * lineyinterval, linexto, lineyfr + i * lineyinterval);  
   }
   pop();
 }
