@@ -1,6 +1,6 @@
 // parts_bg
 
-let [canvasx, canvasy] = [720, 690];
+let [canvasx, canvasy] = [700, 680];
 let [canvasFromx, canvasFromy] = [0, 0];
 let blockw = canvasx;
 let blockh = 10;
@@ -11,12 +11,20 @@ let blocky1 = 0;
 let blockx2 = 0;
 let blocky2 = -1 * canvasy;
 let blocknum = 0;
-let linex1 = 0;
-let liney1 = 0;
+let linexfr = 0;
+let lineyfr = 0;
+let linexto = canvasx;
+let lineyto = canvasy;
+let linexinterval = 20;
+let lineyinterval = 20;
+let linexnum = 0;
+let lineynum = 0;
 
 function setup() {
   createCanvas(canvasx, canvasy);
   blocknum = canvasy / blockh;
+  linexnum = canvasx / linexinterval;
+  lineynum = canvasy / lineyinterval;
 }
 
 function draw() {
@@ -41,8 +49,8 @@ function draw() {
 
   push();
   stroke(255);
-  for (let i = 0; i < blocknum; i++) {
-    line(linex1, liney1 + i * blockh, blockw, liney1 + i * blockh);  
+  for (let i = 0; i < lineynum; i++) {
+    line(linexfr, lineyfr + i * lineyinterval, linexto, lineyto + i * lineyinterval);  
   }
   pop();
 }
