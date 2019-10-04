@@ -19,6 +19,8 @@ function setup() {
 
 function draw() {
   background(0);
+
+  push();
   noStroke();
   for (let i = 0; i < blocknum; i++) {
     fill(i * 2);
@@ -33,4 +35,10 @@ function draw() {
   }
   blocky2 += blockspdy;
   if (canvasy <= blocky2 + blockh) { blocky2 = canvasFromy - canvasy }
+  pop();
+
+  push();
+  stroke(255);
+  line(blockx1, blockh, blockw, blockh);
+  pop();
 }
