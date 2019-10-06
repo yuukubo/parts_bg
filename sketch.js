@@ -19,6 +19,9 @@ let linexinterval = 20;
 let lineyinterval = 20;
 let linexnum = 0;
 let lineynum = 0;
+let age = 0;
+let isswing = 0;
+let swingtimer = 0;
 
 function setup() {
   createCanvas(canvasx, canvasy);
@@ -29,31 +32,55 @@ function setup() {
 
 function draw() {
   background(0);
+  age++;
 
   push();
   noStroke();
   for (let i = 0; i < blocknum; i++) {
     fill(i * 2);
-    rect(blockx1, blocky1 + i * blockh, blockw, blockh);  
+    rect(blockx1, blocky1 + i * blockh, blockw, blockh);
   }
   blocky1 += blockspdy;
   if (canvasy <= blocky1 + blockh) { blocky1 = canvasFromy - canvasy }
 
   for (let i = 0; i < blocknum; i++) {
     fill(blocknum * 2 - i * 2);
-    rect(blockx2, blocky2 + i * blockh, blockw, blockh);  
+    rect(blockx2, blocky2 + i * blockh, blockw, blockh);
   }
   blocky2 += blockspdy;
   if (canvasy <= blocky2 + blockh) { blocky2 = canvasFromy - canvasy }
   pop();
 
-  push();
-  stroke(255);
-  for (let i = 0; i < lineynum; i++) {
-    line(linexfr, lineyfr + i * lineyinterval, linexto, lineyfr + i * lineyinterval);  
+  if (age % 600 === 0) {
+    isswing = 1;
   }
-  for (let i = 0; i < linexnum; i++) {
-    line(linexfr + i * linexinterval, lineyfr, linexfr + i * linexinterval, lineyto);  
+  if (isswing) {
+    swingtimer++;
+    if (0 < swingtimer && swingtimer <= 20) {
+      linexfr++;
+      linexto++;
+    }
+    if (20 < swingtimer && swingtimer <= 40) {
+      linexfr -= 2;
+      linexto -= 2;
+    }
+    if (40 < swingtimer && swingtimer <= 60) {
+      linexfr++;
+      linexto++;
+    }
+    if (60 < swingtimer) {
+      swingtimer = 0;
+      isswing = 0;
+    }
   }
-  pop();
-}
+
+    push();
+    stroke(255, 100);
+    for (let i = 0; i < lineynum; i++) {
+      line(linexfr, lineyfr + i * lineyinterval, linexto, lineyfr + i * lineyinterval);
+    }
+    for (let i = 0; i < linexnum; i++) {
+      line(linexfr + i * linexinterval, lineyfr, linexfr + i * linexinterval, lineyto);
+    }
+    pop();
+  }
