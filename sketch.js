@@ -102,4 +102,27 @@ function draw() {
     }
     pop();
   }
+
+  push();
+  textSize(16);
+  textFont("Comic Sans MS");
+  textAlign(LEFT);
+  fill(150);
+  if (ismode1) {
+    text("mode1 : on", canvasx * 1 / 10, canvasy * 9 / 10);
+  } else {
+    text("mode1 : off", canvasx * 1 / 10, canvasy * 9 / 10);
+  }
+  if (ismode2) {
+    text("mode2 : on", canvasx * 4 / 10, canvasy * 9 / 10);
+  } else {
+    text("mode2 : off", canvasx * 4 / 10, canvasy * 9 / 10);
+  }
+  if (ismode3) {
+    text("mode3 : on", canvasx * 7 / 10, canvasy * 9 / 10);
+  } else {
+    text("mode3 : off", canvasx * 7 / 10, canvasy * 9 / 10);
+  }
+  pop();
+
 }
