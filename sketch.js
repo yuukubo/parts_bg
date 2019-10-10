@@ -25,6 +25,12 @@ let swingtimer = 0;
 let ismode1 = 0;
 let ismode2 = 0;
 let ismode3 = 0;
+let mode1x = canvasx * 1 / 10;
+let mode1y = canvasy * 9 / 10;
+let mode2x = canvasx * 4 / 10;
+let mode2y = canvasy * 9 / 10;
+let mode3x = canvasx * 7 / 10;
+let mode3y = canvasy * 9 / 10;
 
 function setup() {
   createCanvas(canvasx, canvasy);
@@ -66,7 +72,7 @@ function draw() {
     pop();
   }
 
-  if (ismode2) {
+  if (ismode3) {
     if (age % 600 === 0) {
       isswing = 1;
     }
@@ -91,7 +97,7 @@ function draw() {
     }
   }
 
-  if (ismode3) {
+  if (ismode2) {
     push();
     stroke(255, 100);
     for (let i = 0; i < lineynum; i++) {
@@ -103,25 +109,36 @@ function draw() {
     pop();
   }
 
+push();
+noStroke();
+rectMode(CENTER);
+fill(50, 100, 150);
+rect(mode1x, mode1y - 4, 90, 30);
+fill(100, 150, 200);
+rect(mode2x, mode2y - 4, 90, 30);
+fill(150, 200, 250);
+rect(mode3x, mode3y - 4, 90, 30);
+pop();
+
   push();
   textSize(16);
   textFont("Comic Sans MS");
-  textAlign(LEFT);
-  fill(150);
+  textAlign(CENTER);
+  fill(10);
   if (ismode1) {
-    text("mode1 : on", canvasx * 1 / 10, canvasy * 9 / 10);
+    text("mode1 : on", mode1x, mode1y);
   } else {
-    text("mode1 : off", canvasx * 1 / 10, canvasy * 9 / 10);
+    text("mode1 : off", mode1x, mode1y);
   }
   if (ismode2) {
-    text("mode2 : on", canvasx * 4 / 10, canvasy * 9 / 10);
+    text("mode2 : on", mode2x, mode2y);
   } else {
-    text("mode2 : off", canvasx * 4 / 10, canvasy * 9 / 10);
+    text("mode2 : off", mode2x, mode2y);
   }
   if (ismode3) {
-    text("mode3 : on", canvasx * 7 / 10, canvasy * 9 / 10);
+    text("mode3 : on", mode3x, mode3y);
   } else {
-    text("mode3 : off", canvasx * 7 / 10, canvasy * 9 / 10);
+    text("mode3 : off", mode3x, mode3y);
   }
   pop();
 
