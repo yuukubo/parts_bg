@@ -53,6 +53,10 @@ function draw() {
     ismode3 = 1;
   }
 
+  if ((mode1x - 45 < mouseX && mouseX < mode1x + 45) && (mode1y - 19 < mouseY && mouseY < mode1y + 15) && (mouseIsPressed)) {
+    ismode1 = 1;
+  }
+
   if (ismode1) {
     push();
     noStroke();
@@ -109,16 +113,16 @@ function draw() {
     pop();
   }
 
-push();
-noStroke();
-rectMode(CENTER);
-fill(50, 100, 150);
-rect(mode1x, mode1y - 4, 90, 30);
-fill(100, 150, 200);
-rect(mode2x, mode2y - 4, 90, 30);
-fill(150, 200, 250);
-rect(mode3x, mode3y - 4, 90, 30);
-pop();
+  push();
+  noStroke();
+  rectMode(CENTER);
+  fill(50, 100, 150);
+  rect(mode1x, mode1y - 4, 90, 30);
+  fill(100, 150, 200);
+  rect(mode2x, mode2y - 4, 90, 30);
+  fill(150, 200, 250);
+  rect(mode3x, mode3y - 4, 90, 30);
+  pop();
 
   push();
   textSize(16);
