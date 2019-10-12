@@ -56,6 +56,12 @@ function draw() {
   if ((mode1x - 45 < mouseX && mouseX < mode1x + 45) && (mode1y - 19 < mouseY && mouseY < mode1y + 15) && (mouseIsPressed)) {
     ismode1 = 1;
   }
+  if ((mode2x - 45 < mouseX && mouseX < mode2x + 45) && (mode2y - 19 < mouseY && mouseY < mode2y + 15) && (mouseIsPressed)) {
+    ismode2 = 1;
+  }
+  if ((mode3x - 45 < mouseX && mouseX < mode3x + 45) && (mode3y - 19 < mouseY && mouseY < mode3y + 15) && (mouseIsPressed)) {
+    ismode3 = 1;
+  }
 
   if (ismode1) {
     push();
