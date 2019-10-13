@@ -53,28 +53,6 @@ function draw() {
     ismode3 = 1;
   }
 
-  if ((mode1x - 45 < mouseX && mouseX < mode1x + 45) && (mode1y - 19 < mouseY && mouseY < mode1y + 15) && (mouseIsPressed)) {
-    if (ismode1) {
-      ismode1 = 0;
-    } else {
-      ismode1 = 1;
-    }
-  }
-  if ((mode2x - 45 < mouseX && mouseX < mode2x + 45) && (mode2y - 19 < mouseY && mouseY < mode2y + 15) && (mouseIsPressed)) {
-    if (ismode2) {
-      ismode2 = 0;
-    } else {
-      ismode2 = 1;
-    }
-  }
-  if ((mode3x - 45 < mouseX && mouseX < mode3x + 45) && (mode3y - 19 < mouseY && mouseY < mode3y + 15) && (mouseIsPressed)) {
-    if (ismode3) {
-      ismode3 = 0;
-    } else {
-      ismode3 = 1;
-    }
-  }
-
   if (ismode1) {
     push();
     noStroke();
@@ -148,20 +126,44 @@ function draw() {
   textAlign(CENTER);
   fill(10);
   if (ismode1) {
-    text("mode1 : on", mode1x, mode1y);
+    text("mode1 : on ", mode1x, mode1y);
   } else {
     text("mode1 : off", mode1x, mode1y);
   }
   if (ismode2) {
-    text("mode2 : on", mode2x, mode2y);
+    text("mode2 : on ", mode2x, mode2y);
   } else {
     text("mode2 : off", mode2x, mode2y);
   }
   if (ismode3) {
-    text("mode3 : on", mode3x, mode3y);
+    text("mode3 : on ", mode3x, mode3y);
   } else {
     text("mode3 : off", mode3x, mode3y);
   }
   pop();
 
+}
+
+function mouseClicked() {
+  if ((mode1x - 45 < mouseX && mouseX < mode1x + 45) && (mode1y - 19 < mouseY && mouseY < mode1y + 15)) {
+    if (ismode1) {
+      ismode1 = 0;
+    } else {
+      ismode1 = 1;
+    }
+  }
+  if ((mode2x - 45 < mouseX && mouseX < mode2x + 45) && (mode2y - 19 < mouseY && mouseY < mode2y + 15)) {
+    if (ismode2) {
+      ismode2 = 0;
+    } else {
+      ismode2 = 1;
+    }
+  }
+  if ((mode3x - 45 < mouseX && mouseX < mode3x + 45) && (mode3y - 19 < mouseY && mouseY < mode3y + 15)) {
+    if (ismode3) {
+      ismode3 = 0;
+    } else {
+      ismode3 = 1;
+    }
+  }
 }
