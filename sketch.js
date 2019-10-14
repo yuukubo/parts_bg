@@ -31,12 +31,18 @@ let mode2x = canvasx * 4 / 10;
 let mode2y = canvasy * 9 / 10;
 let mode3x = canvasx * 7 / 10;
 let mode3y = canvasy * 9 / 10;
+let buttonx = 0;
+let buttony = 0;
+let buttontextsize = 0;
 
 function setup() {
   createCanvas(canvasx, canvasy);
   blocknum = canvasy / blockh;
   linexnum = canvasx / linexinterval;
   lineynum = canvasy / lineyinterval;
+  buttonx = 90;
+  buttony = 30;
+  buttontextsize = 16;
 }
 
 function draw() {
@@ -110,21 +116,26 @@ function draw() {
   }
 
   push();
-  noStroke();
+  //  noStroke();
+  stroke(255);
   rectMode(CENTER);
   fill(50, 100, 150);
-  rect(mode1x, mode1y - 4, 90, 30);
+  rect(mode1x, mode1y, buttonx, buttony);
   fill(100, 150, 200);
-  rect(mode2x, mode2y - 4, 90, 30);
+  rect(mode2x, mode2y, buttonx, buttony);
   fill(150, 200, 250);
-  rect(mode3x, mode3y - 4, 90, 30);
+  rect(mode3x, mode3y, buttonx, buttony);
   pop();
 
   push();
-  textSize(16);
+  textSize(buttontextsize);
   textFont("Comic Sans MS");
-  textAlign(CENTER);
+  textAlign(CENTER, CENTER);
+  stroke(255);
   fill(10);
+  circle(mode1x, mode1y, 20);
+  circle(mode2x, mode2y, 20);
+  circle(mode3x, mode3y, 20);
   if (ismode1) {
     text("mode1 : on ", mode1x, mode1y);
   } else {
@@ -145,21 +156,21 @@ function draw() {
 }
 
 function mouseClicked() {
-  if ((mode1x - 45 < mouseX && mouseX < mode1x + 45) && (mode1y - 19 < mouseY && mouseY < mode1y + 15)) {
+  if ((mode1x - buttonx / 2 < mouseX && mouseX < mode1x + buttonx / 2) && (mode1y - buttony / 2 < mouseY && mouseY < mode1y + buttony / 2)) {
     if (ismode1) {
       ismode1 = 0;
     } else {
       ismode1 = 1;
     }
   }
-  if ((mode2x - 45 < mouseX && mouseX < mode2x + 45) && (mode2y - 19 < mouseY && mouseY < mode2y + 15)) {
+  if ((mode2x - buttonx / 2 < mouseX && mouseX < mode2x + buttonx / 2) && (mode2y - buttony / 2 < mouseY && mouseY < mode2y + buttony / 2)) {
     if (ismode2) {
       ismode2 = 0;
     } else {
       ismode2 = 1;
     }
   }
-  if ((mode3x - 45 < mouseX && mouseX < mode3x + 45) && (mode3y - 19 < mouseY && mouseY < mode3y + 15)) {
+  if ((mode3x - buttonx / 2 < mouseX && mouseX < mode3x + buttonx / 2) && (mode3y - buttony / 2 < mouseY && mouseY < mode3y + buttony / 2)) {
     if (ismode3) {
       ismode3 = 0;
     } else {
