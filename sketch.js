@@ -153,6 +153,11 @@ function draw() {
   }
   pop();
 
+  push();
+  noStroke();
+  fill(255, 255, 0)
+  circle(mouseX, mouseY, 4);
+  pop();
 }
 
 function mouseClicked() {
