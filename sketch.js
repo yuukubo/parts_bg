@@ -25,12 +25,12 @@ let swingtimer = 0;
 let ismode1 = 0;
 let ismode2 = 0;
 let ismode3 = 0;
-let mode1x = canvasx * 1 / 10;
-let mode1y = canvasy * 9 / 10;
-let mode2x = canvasx * 4 / 10;
-let mode2y = canvasy * 9 / 10;
-let mode3x = canvasx * 7 / 10;
-let mode3y = canvasy * 9 / 10;
+let mode1x = 0;
+let mode1y = 0;
+let mode2x = 0;
+let mode2y = 0;
+let mode3x = 0;
+let mode3y = 0;
 let buttonx = 0;
 let buttony = 0;
 let buttontextsize = 0;
@@ -43,7 +43,13 @@ function setup() {
   buttonx = 90;
   buttony = 30;
   buttontextsize = 16;
-}
+  mode1x = canvasx * random(1, 13) / 14;
+  mode1y = canvasy * 11 / 14;
+  mode2x = canvasx * random(1, 13) / 14;
+  mode2y = canvasy * 12 / 14;
+  mode3x = canvasx * random(1, 13) / 14;
+  mode3y = canvasy * 13 / 14;
+  }
 
 function draw() {
   background(0);
