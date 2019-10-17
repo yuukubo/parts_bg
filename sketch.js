@@ -34,6 +34,7 @@ let mode3y = 0;
 let buttonx = 0;
 let buttony = 0;
 let buttontextsize = 0;
+let button1ontext = "Mode1 : ON ";
 
 function setup() {
   createCanvas(canvasx, canvasy);
@@ -143,7 +144,7 @@ function draw() {
   circle(mode2x, mode2y, 20);
   circle(mode3x, mode3y, 20);
   if (ismode1) {
-    text("mode1 : on ", mode1x, mode1y);
+    text(button1ontext, mode1x, mode1y);
   } else {
     text("mode1 : off", mode1x, mode1y);
   }
