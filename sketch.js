@@ -51,7 +51,7 @@ function setup() {
   mode2y = canvasy * 12 / 14;
   mode3x = canvasx * random(1, 13) / 14;
   mode3y = canvasy * 13 / 14;
-  }
+}
 
 function draw() {
   background(0);
@@ -135,31 +135,7 @@ function draw() {
   rect(mode3x, mode3y, buttonx, buttony);
   pop();
 
-  push();
-  textSize(buttontextsize);
-  textFont("Comic Sans MS");
-  textAlign(CENTER, CENTER);
-  stroke(255);
-  fill(10);
-  circle(mode1x, mode1y, 20);
-  circle(mode2x, mode2y, 20);
-  circle(mode3x, mode3y, 20);
-  if (ismode1) {
-    text(button1label + " : " + buttonontext, mode1x, mode1y);
-  } else {
-    text("mode1 : off", mode1x, mode1y);
-  }
-  if (ismode2) {
-    text("mode2 : on ", mode2x, mode2y);
-  } else {
-    text("mode2 : off", mode2x, mode2y);
-  }
-  if (ismode3) {
-    text("mode3 : on ", mode3x, mode3y);
-  } else {
-    text("mode3 : off", mode3x, mode3y);
-  }
-  pop();
+  setbutton();
 
   push();
   noStroke();
@@ -191,3 +167,32 @@ function mouseClicked() {
     }
   }
 }
+
+function setbutton() {
+  push();
+  textSize(buttontextsize);
+  textFont("Comic Sans MS");
+  textAlign(CENTER, CENTER);
+  stroke(255);
+  fill(10);
+  circle(mode1x, mode1y, 20);
+  circle(mode2x, mode2y, 20);
+  circle(mode3x, mode3y, 20);
+  if (ismode1) {
+    text(button1label + " : " + buttonontext, mode1x, mode1y);
+  } else {
+    text("mode1 : off", mode1x, mode1y);
+  }
+  if (ismode2) {
+    text("mode2 : on ", mode2x, mode2y);
+  } else {
+    text("mode2 : off", mode2x, mode2y);
+  }
+  if (ismode3) {
+    text("mode3 : on ", mode3x, mode3y);
+  } else {
+    text("mode3 : off", mode3x, mode3y);
+  }
+  pop();
+}
+
