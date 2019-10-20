@@ -35,14 +35,17 @@ let buttonx = 0;
 let buttony = 0;
 let buttontextsize = 0;
 let buttonontext = "ON ";
+let buttonofftext = "OFF";
 let button1label = "Mode1";
+let button2label = "Mode2";
+let button3label = "Mode3";
 
 function setup() {
   createCanvas(canvasx, canvasy);
   blocknum = canvasy / blockh;
   linexnum = canvasx / linexinterval;
   lineynum = canvasy / lineyinterval;
-  buttonx = 90;
+  buttonx = 120;
   buttony = 30;
   buttontextsize = 16;
   mode1x = canvasx * random(1, 13) / 14;
@@ -135,7 +138,21 @@ function draw() {
   rect(mode3x, mode3y, buttonx, buttony);
   pop();
 
-  setbutton();
+  if (ismode1) {
+    setbutton(mode1x, mode1y, button1label, buttonontext);
+  } else {
+    setbutton(mode1x, mode1y, button1label, buttonofftext);
+  }
+  if (ismode2) {
+    setbutton(mode2x, mode2y, button2label, buttonontext);
+  } else {
+    setbutton(mode2x, mode2y, button2label, buttonofftext);
+  }
+  if (ismode3) {
+    setbutton(mode3x, mode3y, button3label, buttonontext);
+  } else {
+    setbutton(mode3x, mode3y, button3label, buttonofftext);
+  }
 
   push();
   noStroke();
@@ -168,31 +185,14 @@ function mouseClicked() {
   }
 }
 
-function setbutton() {
+function setbutton(buttonXcenter, buttonYcenter, buttonlabel, buttontext) {
   push();
   textSize(buttontextsize);
   textFont("Comic Sans MS");
   textAlign(CENTER, CENTER);
   stroke(255);
   fill(10);
-  circle(mode1x, mode1y, 20);
-  circle(mode2x, mode2y, 20);
-  circle(mode3x, mode3y, 20);
-  if (ismode1) {
-    text(button1label + " : " + buttonontext, mode1x, mode1y);
-  } else {
-    text("mode1 : off", mode1x, mode1y);
-  }
-  if (ismode2) {
-    text("mode2 : on ", mode2x, mode2y);
-  } else {
-    text("mode2 : off", mode2x, mode2y);
-  }
-  if (ismode3) {
-    text("mode3 : on ", mode3x, mode3y);
-  } else {
-    text("mode3 : off", mode3x, mode3y);
-  }
+  text(buttonlabel + " : " + buttontext, buttonXcenter, buttonYcenter);
   pop();
 }
 
