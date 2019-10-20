@@ -127,8 +127,8 @@ function draw() {
   }
 
   push();
-  //  noStroke();
-  stroke(255);
+  noStroke();
+//  stroke(255);
   rectMode(CENTER);
   fill(50, 100, 150);
   rect(mode1x, mode1y, buttonx, buttony);
@@ -190,9 +190,9 @@ function setbutton(buttonXcenter, buttonYcenter, buttonlabel, buttontext) {
   textSize(buttontextsize);
   textFont("Comic Sans MS");
   textAlign(CENTER, CENTER);
-  stroke(255);
+//  stroke(255);
+  noStroke();
   fill(10);
   text(buttonlabel + " : " + buttontext, buttonXcenter, buttonYcenter);
   pop();
 }
-
