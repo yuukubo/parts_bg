@@ -139,8 +139,8 @@ function draw() {
 
   if (ismode4) {
     push();
-    fill(100, 100, 0, mode4alpha);
-    rect(0, 0, canvasx, canvasy);
+    fill(200, 200, 0, mode4alpha);
+    circle(random(canvasx), random(canvasy), random(5,50), random(5,50));
     if(mode4alphaswitch) {
       mode4alpha += 4;
     } else {
