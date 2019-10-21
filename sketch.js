@@ -25,12 +25,17 @@ let swingtimer = 0;
 let ismode1 = 0;
 let ismode2 = 0;
 let ismode3 = 0;
+let ismode4 = 0;
 let mode1x = 0;
 let mode1y = 0;
 let mode2x = 0;
 let mode2y = 0;
 let mode3x = 0;
 let mode3y = 0;
+let mode4x = 0;
+let mode4y = 0;
+let mode4alpha = 0;
+let mode4alphaswitch = 0;
 let buttonx = 0;
 let buttony = 0;
 let buttontextsize = 0;
@@ -39,6 +44,7 @@ let buttonofftext = "OFF";
 let button1label = "Mode1";
 let button2label = "Mode2";
 let button3label = "Mode3";
+let button4label = "Mode4";
 
 function setup() {
   createCanvas(canvasx, canvasy);
@@ -49,11 +55,13 @@ function setup() {
   buttony = 30;
   buttontextsize = 16;
   mode1x = canvasx * random(1, 13) / 14;
-  mode1y = canvasy * 11 / 14;
+  mode1y = canvasy * 13 / 14;
   mode2x = canvasx * random(1, 13) / 14;
   mode2y = canvasy * 12 / 14;
   mode3x = canvasx * random(1, 13) / 14;
-  mode3y = canvasy * 13 / 14;
+  mode3y = canvasy * 11 / 14;
+  mode4x = canvasx * random(1, 13) / 14;
+  mode4y = canvasy * 10 / 14;
 }
 
 function draw() {
@@ -68,6 +76,9 @@ function draw() {
   }
   if (keyIsDown(51)) {
     ismode3 = 1;
+  }
+  if (keyIsDown(52)) {
+    ismode4 = 1;
   }
 
   if (ismode1) {
@@ -126,16 +137,36 @@ function draw() {
     pop();
   }
 
+  if (ismode4) {
+    push();
+    fill(100, 100, 0, mode4alpha);
+    rect(0, 0, canvasx, canvasy);
+    if(mode4alphaswitch) {
+      mode4alpha += 4;
+    } else {
+      mode4alpha--;
+    }
+    if(mode4alpha <= 0) {
+      mode4alphaswitch = 1;
+    }
+    if (100 <= mode4alpha) {
+      mode4alphaswitch = 0;
+    }
+    pop();
+  }
+
   push();
   noStroke();
 //  stroke(255);
   rectMode(CENTER);
+  fill(0, 50, 100);
+  rect(mode4x, mode4y, buttonx, buttony);
   fill(50, 100, 150);
-  rect(mode1x, mode1y, buttonx, buttony);
+  rect(mode3x, mode3y, buttonx, buttony);
   fill(100, 150, 200);
   rect(mode2x, mode2y, buttonx, buttony);
   fill(150, 200, 250);
-  rect(mode3x, mode3y, buttonx, buttony);
+  rect(mode1x, mode1y, buttonx, buttony);
   pop();
 
   if (ismode1) {
@@ -152,6 +183,11 @@ function draw() {
     setbutton(mode3x, mode3y, button3label, buttonontext);
   } else {
     setbutton(mode3x, mode3y, button3label, buttonofftext);
+  }
+  if (ismode4) {
+    setbutton(mode4x, mode4y, button4label, buttonontext);
+  } else {
+    setbutton(mode4x, mode4y, button4label, buttonofftext);
   }
 
   push();
@@ -181,6 +217,13 @@ function mouseClicked() {
       ismode3 = 0;
     } else {
       ismode3 = 1;
+    }
+  }
+  if ((mode4x - buttonx / 2 < mouseX && mouseX < mode4x + buttonx / 2) && (mode4y - buttony / 2 < mouseY && mouseY < mode4y + buttony / 2)) {
+    if (ismode4) {
+      ismode4 = 0;
+    } else {
+      ismode4 = 1;
     }
   }
 }
