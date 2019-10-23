@@ -40,6 +40,9 @@ let mode4flashx = 0;
 let mode4flashy = 0;
 let mode4flashw = 0;
 let mode4flashh = 0;
+let ballR = 0;
+let ballG = 0;
+let ballB = 0;
 let buttonx = 0;
 let buttony = 0;
 let buttontextsize = 0;
@@ -143,7 +146,8 @@ function draw() {
 
   if (ismode4) {
     push();
-    fill(200, 200, 0, mode4alpha);
+    noStroke();
+    fill(ballR, ballG, ballB, mode4alpha);
     circle(mode4flashx, mode4flashy, mode4flashw, mode4flashh);
     if(mode4alphaswitch) {
       mode4alpha += 4;
@@ -156,6 +160,7 @@ function draw() {
       mode4flashy = random(canvasy)
       mode4flashw = random(5,50);
       mode4flashh = random(5,50);
+      [ballR, ballG, ballB] = [random(0,255), random(0,255), random(0,255)];
     }
     if (100 <= mode4alpha) {
       mode4alphaswitch = 0;
