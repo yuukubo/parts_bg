@@ -36,6 +36,8 @@ let mode4x = 0;
 let mode4y = 0;
 let mode4alpha = 0;
 let mode4alphaswitch = 0;
+let mode4alphaspd1 = 0;
+let mode4alphaspd2 = 0;
 let mode4flashx = 0;
 let mode4flashy = 0;
 let mode4flashw = 0;
@@ -150,9 +152,9 @@ function draw() {
     fill(ballR, ballG, ballB, mode4alpha);
     circle(mode4flashx, mode4flashy, mode4flashw, mode4flashh);
     if(mode4alphaswitch) {
-      mode4alpha += 4;
+      mode4alpha += mode4alphaspd1;
     } else {
-      mode4alpha -= 4;
+      mode4alpha -= mode4alphaspd2;
     }
     if(mode4alpha <= 0) {
       mode4alphaswitch = 1;
@@ -160,6 +162,8 @@ function draw() {
       mode4flashy = random(canvasy)
       mode4flashw = random(5,50);
       mode4flashh = random(5,50);
+      mode4alphaspd1 = random(1,9);
+      mode4alphaspd2 = random(1,9);
       [ballR, ballG, ballB] = [random(0,255), random(0,255), random(0,255)];
     }
     if (100 <= mode4alpha) {
