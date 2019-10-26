@@ -4,7 +4,7 @@ let [canvasx, canvasy] = [700, 680];
 let [canvasFromx, canvasFromy] = [0, 0];
 let blockw = canvasx;
 let blockh = 10;
-let blockspdy = 3;
+let blockspdy = 0;
 let blockspdx = blockw;
 let blockx1 = 0;
 let blocky1 = 0;
@@ -58,6 +58,7 @@ let button4label = "Mode4";
 function setup() {
   createCanvas(canvasx, canvasy);
   blocknum = canvasy / blockh;
+  blockspdy = random(1, 6);
   linexnum = canvasx / linexinterval;
   lineynum = canvasy / lineyinterval;
   buttonx = 120;
