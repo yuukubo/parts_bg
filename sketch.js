@@ -26,6 +26,7 @@ let ismode1 = 0;
 let ismode2 = 0;
 let ismode3 = 0;
 let ismode4 = 0;
+let ismode5 = 0;
 let mode1x = 0;
 let mode1y = 0;
 let mode2x = 0;
@@ -34,6 +35,8 @@ let mode3x = 0;
 let mode3y = 0;
 let mode4x = 0;
 let mode4y = 0;
+let mode5x = 0;
+let mode5y = 0;
 let mode4alpha = 0;
 let mode4alphaswitch = 0;
 let mode4alphaspd1 = 0;
@@ -42,6 +45,7 @@ let mode4flashx = 0;
 let mode4flashy = 0;
 let mode4flashw = 0;
 let mode4flashh = 0;
+let mode5angle = 0;
 let ballR = 0;
 let ballG = 0;
 let ballB = 0;
@@ -54,6 +58,7 @@ let button1label = "Mode1";
 let button2label = "Mode2";
 let button3label = "Mode3";
 let button4label = "Mode4";
+let button5label = "Mode5";
 
 function setup() {
   createCanvas(canvasx, canvasy);
@@ -72,6 +77,9 @@ function setup() {
   mode3y = canvasy * 11 / 14;
   mode4x = canvasx * random(1, 13) / 14;
   mode4y = canvasy * 10 / 14;
+  mode5x = canvasx * random(1, 13) / 14;
+  mode5y = canvasy * 9 / 14;
+  angleMode(DEGREES);
 }
 
 function draw() {
@@ -89,6 +97,9 @@ function draw() {
   }
   if (keyIsDown(52)) {
     ismode4 = 1;
+  }
+  if (keyIsDown(53)) {
+    ismode5 = 1;
   }
 
   if (ismode1) {
@@ -173,10 +184,16 @@ function draw() {
     pop();
   }
 
+  if (ismode5) {
+    rotate(mode5angle);
+    mode5angle = age % 360;
+  }
+
   push();
   noStroke();
-//  stroke(255);
   rectMode(CENTER);
+  fill(50, 0, 50);
+  rect(mode5x, mode5y, buttonx, buttony);
   fill(0, 50, 100);
   rect(mode4x, mode4y, buttonx, buttony);
   fill(50, 100, 150);
@@ -206,6 +223,11 @@ function draw() {
     setbutton(mode4x, mode4y, button4label, buttonontext);
   } else {
     setbutton(mode4x, mode4y, button4label, buttonofftext);
+  }
+  if (ismode5) {
+    setbutton(mode5x, mode5y, button5label, buttonontext);
+  } else {
+    setbutton(mode5x, mode5y, button5label, buttonofftext);
   }
 
   push();
@@ -244,6 +266,13 @@ function mouseClicked() {
       ismode4 = 1;
     }
   }
+  if ((mode5x - buttonx / 2 < mouseX && mouseX < mode5x + buttonx / 2) && (mode5y - buttony / 2 < mouseY && mouseY < mode5y + buttony / 2)) {
+    if (ismode5) {
+      ismode5 = 0;
+    } else {
+      ismode5 = 1;
+    }
+  }
 }
 
 function setbutton(buttonXcenter, buttonYcenter, buttonlabel, buttontext) {
@@ -251,7 +280,6 @@ function setbutton(buttonXcenter, buttonYcenter, buttonlabel, buttontext) {
   textSize(buttontextsize);
   textFont("Comic Sans MS");
   textAlign(CENTER, CENTER);
-//  stroke(255);
   noStroke();
   fill(10);
   text(buttonlabel + " : " + buttontext, buttonXcenter, buttonYcenter);
