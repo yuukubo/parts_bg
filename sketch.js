@@ -80,6 +80,7 @@ function setup() {
   mode5x = canvasx * random(1, 13) / 14;
   mode5y = canvasy * 9 / 14;
   angleMode(DEGREES);
+  translate(canvasx / 2, canvasy / 2);
 }
 
 function draw() {
@@ -185,6 +186,13 @@ function draw() {
   }
 
   if (ismode5) {
+    push();
+    fill(255, 255, 255);
+    textAlign(CENTER, CENTER);
+    translate(canvasx / 2, canvasy / 2);
+    rotate(mode5angle);
+    text("rotate now", 0, 0);
+    pop();
     rotate(mode5angle);
     mode5angle = age % 360;
   }
