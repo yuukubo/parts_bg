@@ -46,6 +46,7 @@ let mode4flashy = 0;
 let mode4flashw = 0;
 let mode4flashh = 0;
 let mode5angle = 0;
+let mode5anglespd = 0;
 let ballR = 0;
 let ballG = 0;
 let ballB = 0;
@@ -79,6 +80,7 @@ function setup() {
   mode4y = canvasy * 10 / 14;
   mode5x = canvasx * random(1, 13) / 14;
   mode5y = canvasy * 9 / 14;
+  mode5anglespd = random(0.1, 4)
   angleMode(DEGREES);
   translate(canvasx / 2, canvasy / 2);
 }
@@ -194,7 +196,7 @@ function draw() {
     text("rotate now", 0, 0);
     pop();
     rotate(mode5angle);
-    mode5angle = age % 360;
+    mode5angle = age * mode5anglespd % 360;
   }
 
   push();
