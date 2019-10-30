@@ -240,6 +240,10 @@ function draw() {
     setbutton(mode5x, mode5y, button5label, buttonofftext);
   }
 
+  if (mouseIsPressed) {
+    mouseClicked();
+  }
+
   push();
   noStroke();
   fill(255, 255, 0)
