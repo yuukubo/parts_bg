@@ -240,10 +240,6 @@ function draw() {
     setbutton(mode5x, mode5y, button5label, buttonofftext);
   }
 
-  if (mouseIsPressed) {
-    mouseClicked();
-  }
-
   push();
   noStroke();
   fill(255, 255, 0)
@@ -288,6 +284,11 @@ function mouseClicked() {
     }
   }
 }
+
+function touchStarted() {
+  mouseClicked();
+}
+
 
 function setbutton(buttonXcenter, buttonYcenter, buttonlabel, buttontext) {
   push();
