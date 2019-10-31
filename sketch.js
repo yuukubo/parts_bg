@@ -27,6 +27,7 @@ let ismode2 = 0;
 let ismode3 = 0;
 let ismode4 = 0;
 let ismode5 = 0;
+let ismode6 = 0;
 let mode1x = 0;
 let mode1y = 0;
 let mode2x = 0;
@@ -37,6 +38,8 @@ let mode4x = 0;
 let mode4y = 0;
 let mode5x = 0;
 let mode5y = 0;
+let mode6x = 0;
+let mode6y = 0;
 let mode4alpha = 0;
 let mode4alphaswitch = 0;
 let mode4alphaspd1 = 0;
@@ -60,6 +63,7 @@ let button2label = "Mode2";
 let button3label = "Mode3";
 let button4label = "Mode4";
 let button5label = "Mode5";
+let button6label = "Mode6";
 
 function setup() {
   createCanvas(canvasx, canvasy);
@@ -80,6 +84,8 @@ function setup() {
   mode4y = canvasy * 10 / 14;
   mode5x = canvasx * random(1, 13) / 14;
   mode5y = canvasy * 9 / 14;
+  mode6x = canvasx * random(1, 13) / 14;
+  mode6y = canvasy * 8 / 14;
   mode5anglespd = random(0.1, 4)
   angleMode(DEGREES);
   translate(canvasx / 2, canvasy / 2);
@@ -103,6 +109,9 @@ function draw() {
   }
   if (keyIsDown(53)) {
     ismode5 = 1;
+  }
+  if (keyIsDown(54)) {
+    ismode6 = 1;
   }
 
   if (ismode1) {
@@ -199,9 +208,15 @@ function draw() {
     mode5angle = age * mode5anglespd % 360;
   }
 
+  if (ismode6) {
+    noLoop();
+  }
+
   push();
   noStroke();
   rectMode(CENTER);
+  fill(100, 50, 0);
+  rect(mode6x, mode6y, buttonx, buttony);
   fill(50, 0, 50);
   rect(mode5x, mode5y, buttonx, buttony);
   fill(0, 50, 100);
@@ -238,6 +253,11 @@ function draw() {
     setbutton(mode5x, mode5y, button5label, buttonontext);
   } else {
     setbutton(mode5x, mode5y, button5label, buttonofftext);
+  }
+  if (ismode6) {
+    setbutton(mode6x, mode6y, button6label, buttonontext);
+  } else {
+    setbutton(mode6x, mode6y, button6label, buttonofftext);
   }
 
   push();
@@ -283,12 +303,15 @@ function mouseClicked() {
       ismode5 = 1;
     }
   }
+  if ((mode6x - buttonx / 2 < mouseX && mouseX < mode6x + buttonx / 2) && (mode6y - buttony / 2 < mouseY && mouseY < mode6y + buttony / 2)) {
+    if (ismode6) {
+      ismode6 = 0;
+      loop();
+    } else {
+      ismode6 = 1;
+    }
+  }
 }
-
-function touchStarted() {
-  mouseClicked();
-}
-
 
 function setbutton(buttonXcenter, buttonYcenter, buttonlabel, buttontext) {
   push();
